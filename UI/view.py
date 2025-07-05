@@ -13,10 +13,11 @@ class View(ft.UserControl):
         self._controller = None
         # graphical elements
         self._title = None
-        self.txt_name = None
-        self.btn_hello = None
+        self._txtIdOggetto = None
+        self._btnAnalizzaOggetti = None
         self.txt_result = None
         self.txt_container = None
+        self._btnCompConnessa = None
 
     def load_interface(self):
         # title
@@ -34,8 +35,17 @@ class View(ft.UserControl):
                                                   bgcolor="orange",
                                                   color="white",
                                                   width=200)
+        self._txtLUN = ft.TextField( label= "lunghezza Oggetto", color="orange", border_color="orange", disabled =True)
+
+        self._btnCecraOggetti = ft.ElevatedButton(text="Cerca Connessa", on_click=self._controller.handleCercaOggetti,
+                                                  bgcolor="orange",
+                                                  color="white",
+                                                  width=200,
+                                                  disabled =True)
 
         self._page.controls.append(ft.Row([self._btnAnalizzaOggetti, self._txtIdOggetto, self._btnCompConnessa],
+                                          alignment=ft.MainAxisAlignment.CENTER))
+        self._page.controls.append(ft.Row([self._txtLUN, self._btnCecraOggetti],
                                           alignment=ft.MainAxisAlignment.CENTER))
 
         # List View where the reply is printed
